@@ -1,13 +1,6 @@
-The Meet4Eat desktop application is the result of an open-source project and
-uses MIT licensing as described below. For information about the Meet4Eat
-open-source project visit https://github.com/botorabi/Meet4Eat
-
-Furthermore, the open-source license of Qt and the licenses of its dependent
-libraries are used. For more details about Qt licensing visit https://www.qt.io
-
-
 The MIT License (MIT)
-Copyright (c) 2017-2018 A. Botorabi, All Rights Reserved
+
+Copyright (c) 2017-2018 A. Botorabi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
