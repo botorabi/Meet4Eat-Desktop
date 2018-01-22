@@ -38,10 +38,10 @@ void ResponseAuthState::onRESTResponseSuccess( const QJsonDocument& results )
     }
 
     QJsonObject data = datadoc.object();
-    QString     auth = data.value( "auth" ).toString( "" );
+    bool        auth = data.value( "auth" ).toBool( false );
     QString     sid  = data.value( "sid" ).toString( "" );
     QString     id   = data.value( "id" ).toString( "" );
-    emit _p_requester->onRESTAuthenticationAuthState( auth == "yes", sid, id );
+    emit _p_requester->onRESTAuthenticationAuthState( auth, sid, id );
 }
 
 void ResponseAuthState::onRESTResponseError( const QString& reason )
