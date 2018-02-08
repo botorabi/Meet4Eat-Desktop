@@ -470,7 +470,7 @@ void WidgetEventPanel::onResponseRemoveLocation( bool success, QString eventId, 
         }
     }
 
-    common::DialogMessage msg( this );
+    common::DialogMessage msg( nullptr, false );
     msg.setupUI( QApplication::translate( "WidgetEvent", "Remove Location" ),
                  text,
                  common::DialogMessage::BtnOk );
