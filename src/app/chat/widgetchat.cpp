@@ -43,12 +43,18 @@ void WidgetChat::setMembers( const QList< user::ModelUserInfoPtr > users )
 {
     Q_ASSERT( _p_webApp && "widget was not setup before!" );
 
+    const QString localuserid = _p_webApp->getUser()->getUserId();
     int row = 0;
     for ( user::ModelUserInfoPtr user: users )
     {
         QListWidgetItem* p_item = new QListWidgetItem( QIcon(), user->getName() );
         p_item->setData( Qt::UserRole, user->getId() );
-        setupUserItem( p_item, user->getStatus() == "online" );
+
+        /** NOTE the local user is always online when we setup the event chat widget. due to some initial timing issue during sign-in process
+                  we may miss user's online status notification, so we work-around it here by checking the member ID agains the local user ID
+        */
+        bool online = user->getId() ==  localuserid || user->getStatus() == "online";
+        setupUserItem( p_item, online );
 
         _p_ui->listWidgetMembers->insertItem( row, p_item );
 
