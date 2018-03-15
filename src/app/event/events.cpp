@@ -94,14 +94,18 @@ void Events::updateUserStatus( const QString& userId, bool online )
     for ( ModelEventPtr event: _events )
     {
         if ( event->getOwner()->getId() == userId )
-            event->getOwner()->setStatus( status );
-
-        for ( user::ModelUserInfoPtr user: event->getMembers() )
         {
-            if ( user->getId() == userId )
+            event->getOwner()->setStatus( status );
+        }
+        else
+        {
+            for ( user::ModelUserInfoPtr user: event->getMembers() )
             {
-                user->setStatus( status );
-                break;
+                if ( user->getId() == userId )
+                {
+                    user->setStatus( status );
+                    break;
+                }
             }
         }
     }

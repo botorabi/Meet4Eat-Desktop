@@ -106,7 +106,7 @@ void RESTEvent::updateLocation(const QString& eventId, event::ModelLocationPtr l
 
 void RESTEvent::setLocationVote( const QString& eventId, const QString& locationId, bool vote )
 {
-    QUrl url( getResourcePath() + "/rest/locationvoting/setvote/" + eventId + "/" + locationId + "/" + ( vote ? "1" : "0" ) );
+    QUrl url( getResourcePath() + "/rest/locationvoting/setvote/" + eventId + "/" + locationId + "/" + ( vote ? "true" : "false" ) );
     auto p_callback = new ResponseEventSetLocationVote( this );
     getRESTOps()->PUT( url, createResultsCallback( p_callback ) );
 }
