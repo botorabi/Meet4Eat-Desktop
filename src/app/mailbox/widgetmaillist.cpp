@@ -194,7 +194,6 @@ void WidgetMailList::onRequestDeleteMail( QString id )
 
 void WidgetMailList::onResponseMails( bool success, QList< ModelMailPtr > mails )
 {
-    int trashedmails = 0;
     if ( success )
     {
         clearMails();
@@ -203,8 +202,6 @@ void WidgetMailList::onResponseMails( bool success, QList< ModelMailPtr > mails 
             //! NOTE currently we do not show trashed mails. in future we may provide a "untrash" function, though
             if ( !mail->isTrashed() )
                 addMail( mail );
-            else
-                trashedmails++;
         }
 
         QString range = QString::number( _rangeFrom ) + "-" + QString::number( _rangeTo ) +

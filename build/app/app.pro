@@ -50,6 +50,7 @@ SOURCES += \
     ../../src/app/gui/buzzwindow.cpp \
     ../../src/app/gui/mainwindow.cpp \
     ../../src/app/gui/mailboxwindow.cpp \
+    ../../src/app/gui/menudecorator.cpp \
     ../../src/app/gui/systemtray.cpp \
     ../../src/app/mailbox/mailbox.cpp \
     ../../src/app/mailbox/modelmail.cpp \
@@ -127,6 +128,7 @@ HEADERS += \
     ../../src/app/gui/buzzwindow.h \
     ../../src/app/gui/mainwindow.h \
     ../../src/app/gui/mailboxwindow.h \
+    ../../src/app/gui/menudecorator.h \
     ../../src/app/gui/systemtray.h \
     ../../src/app/mailbox/mailbox.h \
     ../../src/app/mailbox/modelmail.h \

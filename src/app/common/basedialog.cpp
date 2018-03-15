@@ -21,20 +21,20 @@ BaseDialog::BaseDialog( QWidget* p_parent ) :
 {
     setWindowFlags( Qt::Window | Qt::FramelessWindowHint | Qt::CustomizeWindowHint );
 
-    _p_ui = new Ui::BaseDlg();
-    _p_ui->setupUi( this );
-    _p_ui->pushButtonResizer->setControlledWidget( this );
-    _p_ui->labelTitle->setText( "" );
+    _p_baseUi = new Ui::BaseDlg();
+    _p_baseUi->setupUi( this );
+    _p_baseUi->pushButtonResizer->setControlledWidget( this );
+    _p_baseUi->labelTitle->setText( "" );
 }
 
 BaseDialog::~BaseDialog()
 {
-    delete _p_ui;
+    delete _p_baseUi;
 }
 
 void BaseDialog::setTitle( const QString& title )
 {
-    _p_ui->labelTitle->setText( title );
+    _p_baseUi->labelTitle->setText( title );
 }
 
 void BaseDialog::setupButtons( QString* p_btn1Text, QString* p_btn2Text, QString* p_btn3Text )
@@ -45,19 +45,19 @@ void BaseDialog::setupButtons( QString* p_btn1Text, QString* p_btn2Text, QString
     numbtns += p_btn2Text ? 1 : 0;
     numbtns += p_btn2Text ? 1 : 0;
     if ( numbtns > 1 )
-        _p_ui->layoutFooter->removeItem( _p_ui->spacerRight );
+        _p_baseUi->layoutFooter->removeItem( _p_baseUi->spacerRight );
 
-    _p_ui->pushButton1->setText( p_btn1Text ? *p_btn1Text : "" );
-    _p_ui->pushButton1->setVisible( p_btn1Text ? true : false );
-    _p_ui->pushButton2->setText( p_btn2Text ? *p_btn2Text : "" );
-    _p_ui->pushButton2->setVisible( p_btn2Text ? true : false );
-    _p_ui->pushButton3->setText( p_btn3Text ? *p_btn3Text : "" );
-    _p_ui->pushButton3->setVisible( p_btn3Text ? true : false );
+    _p_baseUi->pushButton1->setText( p_btn1Text ? *p_btn1Text : "" );
+    _p_baseUi->pushButton1->setVisible( p_btn1Text ? true : false );
+    _p_baseUi->pushButton2->setText( p_btn2Text ? *p_btn2Text : "" );
+    _p_baseUi->pushButton2->setVisible( p_btn2Text ? true : false );
+    _p_baseUi->pushButton3->setText( p_btn3Text ? *p_btn3Text : "" );
+    _p_baseUi->pushButton3->setVisible( p_btn3Text ? true : false );
 }
 
 QWidget*BaseDialog::getClientArea()
 {
-    return _p_ui->widgetClientArea;
+    return _p_baseUi->widgetClientArea;
 }
 
 void BaseDialog::setResizable( bool resizable )
@@ -74,7 +74,7 @@ void BaseDialog::setResizable( bool resizable )
         setMinimumSize( QSize( 0, 0 ) );
         setMaximumSize( QSize( 16777215, 16777215 ) );
     }
-    _p_ui->widgetFoot->setVisible( resizable );
+    _p_baseUi->widgetFoot->setVisible( resizable );
 }
 
 void BaseDialog::onBtnCloseClicked()
@@ -104,7 +104,7 @@ void BaseDialog::onBtn3Clicked()
 void BaseDialog::mousePressEvent( QMouseEvent* p_event )
 {
     // drag the window only by the means of head-bar
-    if ( !_p_ui->widgetHead->geometry().contains( p_event->pos() ) )
+    if ( !_p_baseUi->widgetHead->geometry().contains( p_event->pos() ) )
         return;
 
     _draggingPos = p_event->pos();

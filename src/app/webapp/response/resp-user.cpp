@@ -118,7 +118,7 @@ void ResponseUpdateUserData::onRESTResponseSuccess( const QJsonDocument& results
         return;
     }
 
-    QString userid = datadoc.object().value( "userId" ).toString( "" );
+    QString userid = datadoc.object().value( "id" ).toString( "" );
     emit _p_requester->onRESTUserUpdateData( userid );
 }
 

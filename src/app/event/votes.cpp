@@ -20,7 +20,7 @@ class VoteTimeComparator
 {
     public:
 
-        VoteTimeComparator( bool descending ) : _descending( descending ) {}
+        explicit VoteTimeComparator( bool descending ) : _descending( descending ) {}
 
         bool operator()( ModelLocationVotesPtr a, ModelLocationVotesPtr b ) const
         {
@@ -42,7 +42,7 @@ class CountVotesComparator
 {
     public:
 
-        CountVotesComparator( bool descending ) : _descending( descending ) {}
+        explicit CountVotesComparator( bool descending ) : _descending( descending ) {}
 
         bool operator()( ModelLocationVotesPtr a, ModelLocationVotesPtr b ) const
         {
