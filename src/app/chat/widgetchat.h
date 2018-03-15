@@ -50,7 +50,8 @@ class WidgetChat : public QWidget
          *
          * @param p_parent          Parent widget
          */
-                                    WidgetChat( QWidget* p_parent = nullptr );
+        explicit                    WidgetChat( QWidget* p_parent = nullptr );
+
         /**
          * @brief Destroy WidgetEvent
          */

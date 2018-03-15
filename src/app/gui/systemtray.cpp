@@ -8,6 +8,7 @@
 
 #include "systemtray.h"
 #include "mainwindow.h"
+#include "menudecorator.h"
 #include <core/log.h>
 #include <settings/appsettings.h>
 #include <common/guiutils.h>
@@ -137,7 +138,6 @@ void SystemTray::setupSystemTray()
 
     _enableNotification = ( enableevent == "yes" );
     _enableAlarm = ( enablealarm == "yes" );
-
     bool enableautostart = ( autostart == "yes" );
 
     _p_systemTray = new QSystemTrayIcon( QIcon( M4E_SYSTRAY_ICON_NORMAL ), this );
@@ -149,51 +149,22 @@ void SystemTray::setupSystemTray()
     connect( p_menu, SIGNAL( triggered( QAction* ) ), this, SLOT( onMenuTriggert( QAction* ) ) );
     connect( p_menu, SIGNAL( aboutToShow() ), this, SLOT( onMenuAboutToShow() ) );
 
-    QAction* p_action;
-    p_action = new QAction();
-    p_action->setSeparator( true );
-    p_menu->addAction( p_action );
+    MenuDecorator menudeco( p_menu );
 
-    p_action = new QAction( QApplication::translate( "SystemTray", "Open Meet4Eat" ) );
-    p_action->setData( QVariant( MenuOpen ) );
-    p_menu->addAction( p_action );
-
-    p_action = new QAction();
-    p_action->setSeparator( true );
-    p_menu->addAction( p_action );
-
-    p_action = new QAction( QApplication::translate( "SystemTray", "Enable Notification" ) );
-    p_action->setCheckable( true );
-    p_action->setChecked( _enableNotification );
-    p_action->setData( QVariant( MenuEnableNotification ) );
-    p_menu->addAction( p_action );
-
-    p_action = new QAction( QApplication::translate( "SystemTray", "Enable Alarm" ) );
-    p_action->setCheckable( true );
-    p_action->setChecked( _enableAlarm );
-    p_action->setData( QVariant( MenuEnableAlarm ) );
-    p_menu->addAction( p_action );
+    menudeco.addMenuSeperator();
+    menudeco.addMenuItem( QApplication::translate( "SystemTray", "Open Meet4Eat" ), QVariant( MenuOpen ) );
+    menudeco.addMenuSeperator();
+    menudeco.addMenuItemCheckbox( QApplication::translate( "SystemTray", "Enable Notification" ), QVariant( MenuEnableNotification ), _enableNotification );
+    menudeco.addMenuItemCheckbox( QApplication::translate( "SystemTray", "Enable Alarm" ), QVariant( MenuEnableAlarm ), _enableAlarm );
 
     //! NOTE currently there is no support for auto-start on MacOS
 #ifndef Q_OS_MACOS
-    p_action = new QAction();
-    p_action->setSeparator( true );
-    p_menu->addAction( p_action );
-
-    p_action = new QAction( QApplication::translate( "SystemTray", "Start on Logon" ) );
-    p_action->setData( QVariant( MenuEnableAutoStart ) );
-    p_action->setCheckable( true );
-    p_action->setChecked( enableautostart );
-    p_menu->addAction( p_action );
+    menudeco.addMenuSeperator();
+    menudeco.addMenuItemCheckbox( QApplication::translate( "SystemTray", "Start on Logon" ), QVariant( MenuEnableAutoStart ), enableautostart );
 #endif
 
-    p_action = new QAction();
-    p_action->setSeparator( true );
-    p_menu->addAction( p_action );
-
-    p_action = new QAction( QApplication::translate( "SystemTray", "Quit" ) );
-    p_action->setData( QVariant( MenuQuit ) );
-    p_menu->addAction( p_action );
+    menudeco.addMenuSeperator();
+    menudeco.addMenuItem( QApplication::translate( "SystemTray", "Quit" ), QVariant( MenuQuit ) );
 
     _p_systemTray->setContextMenu( p_menu );
     _p_systemTray->show();

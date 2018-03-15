@@ -51,7 +51,7 @@ bool Log::addSink( const std::string& sinkname, const std::string& filename, uns
 
     // check if there is already a sink with requested sink name
     std::vector< Sink* >::iterator p_sink = _sinks.begin(), p_sinkEnd = _sinks.end();
-    for ( ; p_sink != p_sinkEnd; p_sink++ )
+    for ( ; p_sink != p_sinkEnd; ++p_sink )
     {
         if ( ( *p_sink )->_name == sinkname )
         {
@@ -138,7 +138,7 @@ void Log::reset()
 {
     // delete all allocated streams, except the std streams
     std::vector< Sink* >::iterator p_sink = _sinks.begin(), p_sinkEnd = _sinks.end();
-    for ( ; p_sink != p_sinkEnd; p_sink++ )
+    for ( ; p_sink != p_sinkEnd; ++p_sink )
         delete *p_sink;
 
     _sinks.clear();
@@ -147,7 +147,7 @@ void Log::reset()
 void Log::out( const std::string& msg )
 {
     std::vector< Sink* >::iterator p_sink = _sinks.begin(), p_sinkEnd = _sinks.end();
-    for ( ; p_sink != p_sinkEnd; p_sink++ )
+    for ( ; p_sink != p_sinkEnd; ++p_sink )
     {
         if ( ( *p_sink )->_logLevel <= _severity )
         {

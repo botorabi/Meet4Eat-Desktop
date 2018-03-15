@@ -144,7 +144,7 @@ class BaseDialog : public QDialog
 
         void                        mouseMoveEvent( QMouseEvent* p_event );
 
-        Ui::BaseDlg*                _p_ui     = nullptr;
+        Ui::BaseDlg*                _p_baseUi = nullptr;
 
         bool                        _dragging = false;
 
