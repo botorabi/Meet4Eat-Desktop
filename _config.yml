@@ -16,16 +16,13 @@
 title: Meet4Eat-Desktop
 email: botorabi@gmx.net
 description: >- # this means to ignore newlines until "baseurl:"
-  A webservice based social collaboration application.
+  A cloud based social collaboration app
 baseurl: "/Meet4Eat-Desktop" # the subpath of your site, e.g. /blog
 url: "https://botorabi.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
+twitter_username: 
 github_username:  botorabi
 repository: botorabi/Meet4Eat-Desktop
 show_downloads: true
-##github:
-##  zip_url: https://github.com/botorabi/Meet4Eat-Desktop/archive/v0.9.3.zip
-##  tar_url: https://github.com/botorabi/Meet4Eat-Desktop/archive/v0.9.3.tar.gz
 
 # Build settings
 markdown: kramdown
@@ -33,14 +30,3 @@ theme: jekyll-theme-architect
 plugins:
   - jekyll-feed
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
