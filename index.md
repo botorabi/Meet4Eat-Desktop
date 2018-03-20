@@ -4,7 +4,7 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: default
 ---
-<h1><span>![](assets/images/screen1.png) Meet4Eat </span></h1>
+<h1><span><image src="/Meet4Eat-Desktop/assets/favicon.png"/> Meet4Eat </span></h1>
 
 **Meet4Eat** is a social collaboration application providing an easy way to communicate with your colleagues and friends to make an appointment for a social event such as meeting for daily lunch.
 
