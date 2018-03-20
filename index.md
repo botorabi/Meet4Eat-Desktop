@@ -1,10 +1,7 @@
 ---
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: default
 ---
-<h1><span><image src="/Meet4Eat-Desktop/assets/favicon.png"/> Meet4Eat </span></h1>
+<h1><span><image src="/Meet4Eat-Desktop/assets/images/favicon.png"/> Meet4Eat </span></h1>
 
 **Meet4Eat** is a social collaboration application providing an easy way to communicate with your colleagues and friends to make an appointment for a social event such as meeting for daily lunch.
 
